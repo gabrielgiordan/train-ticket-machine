@@ -1,6 +1,7 @@
 package com.gabrielgiordano.ttm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import com.gabrielgiordano.ttm.service.SearchService;
  * 
  * @author Gabriel Giordano
  */
+@Order(2)
 @RestController
 public class SearchController implements SearchInterface<SearchElementBean> {
 

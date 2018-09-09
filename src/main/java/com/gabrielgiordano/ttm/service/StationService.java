@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
  * 
  * @author Gabriel Giordano
  */
+@Order(0)
 @Service
 public class StationService implements StationInterface<StationBean> {
 	
@@ -45,7 +47,6 @@ public class StationService implements StationInterface<StationBean> {
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-			
 		}
 	}
 	
