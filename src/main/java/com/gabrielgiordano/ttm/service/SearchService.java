@@ -1,5 +1,6 @@
 package com.gabrielgiordano.ttm.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
@@ -24,7 +25,7 @@ public class SearchService implements SearchInterface<SearchElementBean> {
 	private Trie trie;
 	
 	/** A cached list only for runtime speed purposes. */
-	private String[] cachedList;
+	private Collection<String> cachedList;
 
 	/** The injected station service to get the data. */
 	@Autowired
@@ -40,28 +41,22 @@ public class SearchService implements SearchInterface<SearchElementBean> {
 	 */
 	@PostConstruct
 	public void init() {
-		
-		System.out.println(stationComponent);
 
 		Collection<StationBean> stations = stationComponent.getStations();
 		
-		System.out.println(stations.size());
-		
-		cachedList = new String[stations.size()];
+		cachedList = new ArrayList<>();
 		trie = new Trie();
-
-		int i = 0;
 
 		for (StationBean station : stations) {
 			trie.add(station.getName());
-			cachedList[i++] = station.getName();
+			cachedList.add(station.getName());
 		}
 		
 		System.out.println("kkk");
 	}
 
 	@Override
-	public String[] list() {
+	public Collection<String> list() {
 		return cachedList;
 	}
 

@@ -1,5 +1,7 @@
 package com.gabrielgiordano.ttm.controller;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +26,7 @@ public class SearchController implements SearchInterface<SearchElementBean> {
 	
 	@RequestMapping("/search")
 	@Override
-	public String[] list() {
+	public Collection<String> list() {
 		return searchService.list();
 	}
 	

@@ -1,5 +1,7 @@
 package com.gabrielgiordano.ttm.controller;
 
+import java.util.Collection;
+
 /**
  * The Interface Search related controller and services.
  *
@@ -13,7 +15,7 @@ public interface SearchInterface<E> {
 	 *
 	 * @return the string[] containing the data
 	 */
-	String[] list();
+	Collection<String> list();
 
 	/**
 	 * Performs the search.

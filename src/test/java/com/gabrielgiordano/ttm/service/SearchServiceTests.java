@@ -24,7 +24,7 @@ public class SearchServiceTests {
 
 	@Test
 	public void testListGreaterThanZero() {
-		assertTrue(searchService.list().length > 0);
+		assertTrue(searchService.list().size() > 0);
 	}
 	
 	@Test
