@@ -105,7 +105,12 @@ public class Trie implements TrieInterface<SearchElementBean> {
 	 * @return the normalized string
 	 */
 	protected static String normalize(String s) {
-		return Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").toLowerCase();
+		
+		String normalized = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}+]", "").toLowerCase();
+		
+		System.out.println(normalized);
+		
+		return normalized;
 	}
 
 	/**
