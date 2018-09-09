@@ -48,8 +48,6 @@ public class SearchService implements SearchInterface<SearchElementBean> {
 		trie = new Trie();
 
 		for (StationBean station : stations) {
-			
-			System.out.println(station.getName());
 			trie.add(station.getName());
 			cachedList.add(station.getName());
 		}

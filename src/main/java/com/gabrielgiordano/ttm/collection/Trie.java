@@ -108,8 +108,6 @@ public class Trie implements TrieInterface<SearchElementBean> {
 		
 		String normalized = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}+]", "").toLowerCase();
 		
-		System.out.println(normalized);
-		
 		return normalized;
 	}
 
