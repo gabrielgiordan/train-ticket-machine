@@ -47,7 +47,7 @@ public class StationComponent implements StationInterface<StationBean> {
 				try {
 					
 					// Jar files doesn't recognize resources as Files
-					InputStreamReader reader = new InputStreamReader(csv.getInputStream(), StandardCharsets.UTF_8);
+					InputStreamReader reader = new InputStreamReader(csv.getInputStream(), StandardCharsets.ISO_8859_1);
 					stations = new CsvToBeanBuilder<StationBean>(reader).withType(StationBean.class).build().parse();
 					
 				} catch (IllegalStateException | IOException e) {
