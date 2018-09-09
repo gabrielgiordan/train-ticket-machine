@@ -22,8 +22,6 @@ import com.opencsv.bean.CsvToBeanBuilder;
 @Service
 public class StationService implements StationInterface<StationBean> {
 	
-	ApplicationProperties properties;
-	
 	/** The stations. */
 	private Collection<StationBean> stations = new ArrayList<StationBean>();
 	
@@ -34,7 +32,6 @@ public class StationService implements StationInterface<StationBean> {
 	 */
 	@Autowired
 	public StationService(ApplicationProperties properties) {
-		this.properties = properties;
 		
 		ClassPathResource csv = new ClassPathResource(properties.getCsv());
 
@@ -51,7 +48,6 @@ public class StationService implements StationInterface<StationBean> {
 			
 		}
 	}
-	
 	
 	@Override
 	public Collection<StationBean> getStations() {
