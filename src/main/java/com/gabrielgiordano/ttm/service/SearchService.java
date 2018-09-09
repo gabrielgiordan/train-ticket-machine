@@ -17,7 +17,7 @@ import com.gabrielgiordano.ttm.controller.SearchInterface;
  * 
  * @author Gabriel Giordano
  */
-@Service
+@Service("SearchService")
 public class SearchService implements SearchInterface<SearchElementBean> {
 
 	/** The trie to make the search work. */
@@ -28,7 +28,7 @@ public class SearchService implements SearchInterface<SearchElementBean> {
 
 	/** The injected station service to get the data. */
 	@Autowired
-	private StationService stationService;
+	private StationComponent stationComponent;
 
 	/**
 	 * Instantiates a new search service.
@@ -41,7 +41,7 @@ public class SearchService implements SearchInterface<SearchElementBean> {
 	@PostConstruct
 	public void init() {
 
-		Collection<StationBean> stations = stationService.getStations();
+		Collection<StationBean> stations = stationComponent.getStations();
 		
 		cachedList = new String[stations.size()];
 		trie = new Trie();

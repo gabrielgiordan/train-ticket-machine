@@ -12,10 +12,10 @@ import com.gabrielgiordano.ttm.Application;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class StationServiceTests {
+public class StationComponentTests {
 
 	@Autowired
-	StationService stationService;
+	StationComponent stationService;
 
 	@Test
 	public void testStationServiceIsNotNull() {
