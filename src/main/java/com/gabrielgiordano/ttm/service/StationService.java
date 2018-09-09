@@ -1,10 +1,11 @@
 package com.gabrielgiordano.ttm.service;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -23,6 +24,8 @@ import com.opencsv.bean.CsvToBeanBuilder;
 @Service
 public class StationService implements StationInterface<StationBean> {
 	
+	ApplicationProperties properties;
+	
 	/** The stations. */
 	private Collection<StationBean> stations = new ArrayList<StationBean>();
 	
@@ -34,22 +37,24 @@ public class StationService implements StationInterface<StationBean> {
 	@Autowired
 	public StationService(ApplicationProperties properties) {
 		
+		this.properties = properties;
+	}
+	
+	@PostConstruct
+	public void init() {
 		ClassPathResource csv = new ClassPathResource(properties.getCsv());
 
 		if (csv != null) {
-			
-			try (FileReader fileReader = new FileReader(csv.getFile());) {
+			try {
 				
-				stations = new CsvToBeanBuilder<StationBean>(fileReader).withType(StationBean.class).build().parse();
+				// Jar files doesn't recognize resources as Files
+				InputStreamReader reader = new InputStreamReader(csv.getInputStream());
+				stations = new CsvToBeanBuilder<StationBean>(reader).withType(StationBean.class).build().parse();
 				
-			} catch (FileNotFoundException e) {
-				
-				e.printStackTrace();
-				
-			} catch (IOException e) {
-				
+			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
+			
 		}
 	}
 	
