@@ -40,8 +40,12 @@ public class SearchService implements SearchInterface<SearchElementBean> {
 	 */
 	@PostConstruct
 	public void init() {
+		
+		System.out.println(stationComponent);
 
 		Collection<StationBean> stations = stationComponent.getStations();
+		
+		System.out.println(stations.size());
 		
 		cachedList = new String[stations.size()];
 		trie = new Trie();
