@@ -5,8 +5,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -36,12 +34,8 @@ public class StationService implements StationInterface<StationBean> {
 	 */
 	@Autowired
 	public StationService(ApplicationProperties properties) {
-		
 		this.properties = properties;
-	}
-	
-	@PostConstruct
-	public void init() {
+		
 		ClassPathResource csv = new ClassPathResource(properties.getCsv());
 
 		if (csv != null) {
@@ -57,6 +51,7 @@ public class StationService implements StationInterface<StationBean> {
 			
 		}
 	}
+	
 	
 	@Override
 	public Collection<StationBean> getStations() {
