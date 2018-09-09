@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import com.gabrielgiordano.ttm.bean.SearchElementBean;
@@ -19,7 +18,6 @@ import com.gabrielgiordano.ttm.controller.SearchInterface;
  * @author Gabriel Giordano
  */
 @Service
-@Order(1)
 public class SearchService implements SearchInterface<SearchElementBean> {
 
 	/** The trie to make the search work. */

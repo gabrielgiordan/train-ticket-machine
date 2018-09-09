@@ -5,10 +5,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.gabrielgiordano.ttm.ApplicationProperties;
 import com.gabrielgiordano.ttm.bean.StationBean;
@@ -20,9 +21,11 @@ import com.opencsv.bean.CsvToBeanBuilder;
  * 
  * @author Gabriel Giordano
  */
-@Order(0)
-@Service
+@Component
 public class StationService implements StationInterface<StationBean> {
+	
+	@Autowired
+	ApplicationProperties properties;
 	
 	/** The stations. */
 	private Collection<StationBean> stations = new ArrayList<StationBean>();
@@ -32,9 +35,10 @@ public class StationService implements StationInterface<StationBean> {
 	 *
 	 * @param properties the Spring's injected properties from application.properties
 	 */
-	@Autowired
-	public StationService(ApplicationProperties properties) {
-		
+	public StationService() {}
+	
+	@PostConstruct
+	public void init() {
 		ClassPathResource csv = new ClassPathResource(properties.getCsv());
 
 		if (csv != null) {
