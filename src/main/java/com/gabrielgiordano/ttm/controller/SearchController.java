@@ -24,6 +24,11 @@ public class SearchController implements SearchInterface<SearchElementBean> {
 	@Qualifier("SearchService")
 	private SearchService searchService;
 	
+	@RequestMapping("/")
+	public String index() {
+		return "Hello, go to /search/{your-search} to query the stations!";
+	}
+	
 	@RequestMapping("/search")
 	@Override
 	public Collection<String> list() {
