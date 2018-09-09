@@ -2,6 +2,7 @@ package com.gabrielgiordano.ttm.service;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class StationComponent implements StationInterface<StationBean> {
 				try {
 					
 					// Jar files doesn't recognize resources as Files
-					InputStreamReader reader = new InputStreamReader(csv.getInputStream());
+					InputStreamReader reader = new InputStreamReader(csv.getInputStream(), StandardCharsets.UTF_8);
 					stations = new CsvToBeanBuilder<StationBean>(reader).withType(StationBean.class).build().parse();
 					
 				} catch (IllegalStateException | IOException e) {
