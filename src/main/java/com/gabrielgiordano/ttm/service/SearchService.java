@@ -56,6 +56,8 @@ public class SearchService implements SearchInterface<SearchElementBean> {
 			trie.add(station.getName());
 			cachedList[i++] = station.getName();
 		}
+		
+		System.out.println("kkk");
 	}
 
 	@Override
