@@ -23,11 +23,6 @@ public class SearchServiceTests {
 	}
 
 	@Test
-	public void testListGreaterThanZero() {
-		assertTrue(searchService.list().size() > 0);
-	}
-	
-	@Test
 	public void testSearchResultsNotNull() {
 		assertNotNull(searchService.search("a"));
 	}

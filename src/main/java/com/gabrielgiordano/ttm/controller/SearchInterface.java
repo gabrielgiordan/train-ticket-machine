@@ -1,6 +1,6 @@
 package com.gabrielgiordano.ttm.controller;
 
-import java.util.Collection;
+import com.gabrielgiordano.ttm.bean.SearchElementBean;
 
 /**
  * The Interface Search related controller and services.
@@ -15,7 +15,7 @@ public interface SearchInterface<E> {
 	 *
 	 * @return the string[] containing the data
 	 */
-	Collection<String> list();
+	SearchElementBean searchEmpty();
 
 	/**
 	 * Performs the search.

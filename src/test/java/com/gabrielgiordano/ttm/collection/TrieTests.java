@@ -55,5 +55,4 @@ public class TrieTests {
 		
 		assertEquals(s, trie.getResult("t").getSuffixes());
 	}
-
 }

@@ -54,8 +54,8 @@ public class SearchService implements SearchInterface<SearchElementBean> {
 	}
 
 	@Override
-	public Collection<String> list() {
-		return cachedList;
+	public SearchElementBean searchEmpty() {
+		return new SearchElementBean();
 	}
 
 	@Override
