@@ -11,19 +11,19 @@ function autoCompleteRequest(input, onload) {
 }
 
 function autoCompleteResponse(json) {
-    
-    replaceChilds(words, json.words)
-
-    wordsSize.innerHTML = `${json.size} stations`
 
     if (json.suffixes) {
-        suffix.value = search.value + json.suffixes[0]
+        suffix.value = search.value + json.words[0].substr(search.value.length, json.words[0].length)
         replaceChilds(chars)
     }
     else {
         suffix.value = ''
         replaceChilds(chars, json.characters, ['badge', 'badge-primary'])
     }
+    
+    replaceChilds(words, json.words)
+
+    wordsSize.innerHTML = `${json.size} stations`
 
     charsSpacing.innerHTML = search.value
 }
@@ -81,11 +81,8 @@ window.onload = () => {
     search.parentNode.appendChild(words)
 
     autoCompleteRequest('', autoCompleteResponse)
-    search.oninput = (event) => {
-
-        if (suffix.value.substr(0, search.value.length).toLowerCase() !== search.value.toLowerCase()) {
-            suffix.value = ''
-        }
+    search.onkeyup = (event) => {
+        suffix.value = search.value + suffix.value.substr(search.value.length, suffix.length)
 
         autoCompleteRequest(search.value, autoCompleteResponse)
     }
