@@ -51,11 +51,6 @@ function replaceChilds(ul, arr, classes) {
 window.onload = () => {
     
     search = document.getElementsByClassName('search')[0]
-    
-    autoCompleteRequest('', autoCompleteResponse)
-    search.oninput = (event) => {
-        autoCompleteRequest(search.value, autoCompleteResponse)
-    }
 
     charsContainer = document.createElement('div')
     charsContainer.className = 'chars-container'
@@ -84,4 +79,14 @@ window.onload = () => {
     charsContainer.appendChild(charsSpacing)
     charsSpacing.parentNode.appendChild(chars)
     search.parentNode.appendChild(words)
+
+    autoCompleteRequest('', autoCompleteResponse)
+    search.oninput = (event) => {
+
+        if (suffix.value.substr(0, search.value.length).toLowerCase() !== search.value.toLowerCase()) {
+            suffix.value = ''
+        }
+
+        autoCompleteRequest(search.value, autoCompleteResponse)
+    }
 }
