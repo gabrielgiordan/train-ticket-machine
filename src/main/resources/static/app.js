@@ -1,6 +1,8 @@
 function autoCompleteRequest(input, onload) {
     let request = new XMLHttpRequest()
 
+    suffix.value = ''
+
     request.open('GET', `search/${encodeURI(input)}`, true)
     request.onload = () => {
         if (request.readyState == 4 && request.status == 200) {
