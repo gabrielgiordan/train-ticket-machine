@@ -14,7 +14,7 @@ function autoCompleteResponse(json) {
     
     replaceChilds(words, json.words)
 
-    wordsSize.innerHTML = `${json.size} matches`
+    wordsSize.innerHTML = `${json.size} stations`
 
     if (json.suffixes) {
         suffix.value = search.value + json.suffixes[0]
