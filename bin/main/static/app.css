@@ -43,6 +43,7 @@
     font-size: 16px;
     font-weight: normal;
     padding: 4px 2px;
+    overflow: hidden;
 }
 .words {
     display: inline-block;

@@ -9,7 +9,7 @@ import java.util.Map;
 import com.gabrielgiordano.ttm.bean.SearchElementBean;
 
 /**
- * A custom search prefix Trie algorithm implementation with caching and run time speed in mind. 
+ * A custom search prefix Trie algorithm implementation with caching and runtime speed in mind. 
  * Also called digital tree, radix tree or prefix tree.
  *  
  * More about Trie: @see <a href="https://en.wikipedia.org/wiki/Trie">Wikipedia</a>
@@ -106,9 +106,10 @@ public class Trie implements TrieInterface<SearchElementBean> {
 	 */
 	protected static String normalize(String s) {
 		
-		String normalized = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}+]", "").toLowerCase();
-		
-		return normalized;
+		return Normalizer
+				.normalize(s, Normalizer.Form.NFD)
+				.replaceAll("[^\\p{ASCII}+]", "")
+				.toLowerCase();
 	}
 
 	/**
