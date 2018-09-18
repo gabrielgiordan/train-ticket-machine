@@ -14,12 +14,12 @@ import com.gabrielgiordano.ttm.Application;
 @SpringBootTest(classes = Application.class)
 public class SearchControllerTests {
 
-	@Autowired
-	SearchController searchController;
+  @Autowired
+  SearchController searchController;
 
-	@Test
-	public void testSearchServiceIsNotNull() {
-		assertNotNull(searchController);
-	}
+  @Test
+  public void testSearchServiceIsNotNull() {
+    assertNotNull(searchController);
+  }
 
 }

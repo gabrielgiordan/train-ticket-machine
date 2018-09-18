@@ -9,19 +9,19 @@ import com.gabrielgiordano.ttm.bean.SearchElementBean;
  * @author Gabriel Giordano
  */
 public interface SearchInterface<E> {
-	
-	/**
-	 * Gets the list of data to be searched.
-	 *
-	 * @return the string[] containing the data
-	 */
-	SearchElementBean searchEmpty();
 
-	/**
-	 * Performs the search.
-	 *
-	 * @param query the search query
-	 * @return the E with the resulted search bean element
-	 */
-	E search(String query);
+  /**
+   * Gets the list of data to be searched.
+   *
+   * @return the string[] containing the data
+   */
+  SearchElementBean searchEmpty();
+
+  /**
+   * Performs the search.
+   *
+   * @param query the search query
+   * @return the E with the resulted search bean element
+   */
+  E search(String query);
 }

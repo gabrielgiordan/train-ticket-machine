@@ -18,27 +18,27 @@ import com.gabrielgiordano.ttm.service.SearchService;
 @Controller("SearchController")
 public class SearchController implements SearchInterface<SearchElementBean> {
 
-	/** The injected search service. */
-	@Autowired
-	@Qualifier("SearchService")
-	private SearchService searchService;
-	
-	@RequestMapping("/home")
-	public String index() {
-		return "index";
-	}
-	
-	@RequestMapping("/search")
-	@ResponseBody
-	@Override
-	public SearchElementBean searchEmpty() {
-		return searchService.search("");
-	}
-	
-	@RequestMapping("/search/{prefix}")
-	@ResponseBody
-	@Override
-	public SearchElementBean search(@PathVariable String prefix) {
-		return searchService.search(prefix);
-	}
+  /** The injected search service. */
+  @Autowired
+  @Qualifier("SearchService")
+  private SearchService searchService;
+
+  @RequestMapping("/home")
+  public String index() {
+    return "index";
+  }
+
+  @RequestMapping("/search")
+  @ResponseBody
+  @Override
+  public SearchElementBean searchEmpty() {
+    return searchService.search("");
+  }
+
+  @RequestMapping("/search/{prefix}")
+  @ResponseBody
+  @Override
+  public SearchElementBean search(@PathVariable String prefix) {
+    return searchService.search(prefix);
+  }
 }

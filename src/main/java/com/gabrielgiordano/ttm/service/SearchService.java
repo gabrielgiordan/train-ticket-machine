@@ -20,42 +20,42 @@ import com.gabrielgiordano.ttm.controller.SearchInterface;
 @Service("SearchService")
 public class SearchService implements SearchInterface<SearchElementBean> {
 
-	/** The trie to make the search work. */
-	private Trie trie;
+  /** The trie to make the search work. */
+  private Trie trie;
 
-	/** The injected station service to get the data. */
-	@Autowired
-	private StationComponent stationComponent;
+  /** The injected station service to get the data. */
+  @Autowired
+  private StationComponent stationComponent;
 
-	/**
-	 * Instantiates a new search service.
-	 */
-	public SearchService() {}
+  /**
+   * Instantiates a new search service.
+   */
+  public SearchService() {}
 
-	/**
-	 * Inits after the Spring's station service injection and initializes the cached list and the trie with data.
-	 */
-	@PostConstruct
-	public void init() {
+  /**
+   * Inits after the Spring's station service injection and initializes the cached
+   * list and the trie with data.
+   */
+  @PostConstruct
+  public void init() {
 
-		Collection<StationBean> stations = stationComponent.getStations();
-	
-		trie = new Trie();
+    Collection<StationBean> stations = stationComponent.getStations();
 
-		for (StationBean station : stations) {
-			trie.add(station.getName());
-		}
-	}
+    trie = new Trie();
 
-	@Override
-	public SearchElementBean searchEmpty() {
-		return new SearchElementBean();
-	}
+    for (StationBean station : stations) {
+      trie.add(station.getName());
+    }
+  }
 
-	@Override
-	public SearchElementBean search(String query) {
-		return trie.getResult(query);
-	}
+  @Override
+  public SearchElementBean searchEmpty() {
+    return new SearchElementBean();
+  }
 
+  @Override
+  public SearchElementBean search(String query) {
+    return trie.getResult(query);
+  }
 
 }

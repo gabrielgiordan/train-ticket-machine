@@ -13,17 +13,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = Application.class)
 public class ApplicationPropertiesTests {
 
-	@Autowired
-	ApplicationProperties properties;
+  @Autowired
+  ApplicationProperties properties;
 
-	@Test
-	public void testPropertiesIsNotNull() {
-		assertNotNull(properties);
-	}
-	
-	@Test
-	public void testHasCsvExtension() {
-		assertThat(properties.getCsv(), CoreMatchers.containsString(".csv"));
-	}
+  @Test
+  public void testPropertiesIsNotNull() {
+    assertNotNull(properties);
+  }
+
+  @Test
+  public void testHasCsvExtension() {
+    assertThat(properties.getCsv(), CoreMatchers.containsString(".csv"));
+  }
 
 }

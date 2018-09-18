@@ -9,11 +9,11 @@ import java.util.Collection;
  * @author Gabriel Giordano
  */
 public interface StationInterface<E> {
-	
-	/**
-	 * Gets the all the stations.
-	 *
-	 * @return the stations
-	 */
-	Collection<E> getStations();
+
+  /**
+   * Gets the all the stations.
+   *
+   * @return the stations
+   */
+  Collection<E> getStations();
 }

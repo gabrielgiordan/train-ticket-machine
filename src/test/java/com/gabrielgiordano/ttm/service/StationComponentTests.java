@@ -14,18 +14,18 @@ import com.gabrielgiordano.ttm.Application;
 @SpringBootTest(classes = Application.class)
 public class StationComponentTests {
 
-	@Autowired
-	StationComponent stationService;
+  @Autowired
+  StationComponent stationService;
 
-	@Test
-	public void testStationServiceIsNotNull() {
-		assertNotNull(stationService);
-	}
+  @Test
+  public void testStationServiceIsNotNull() {
+    assertNotNull(stationService);
+  }
 
-	@Test
-	public void testHasStations() {
-		assertNotNull(stationService.getStations());
-		assertTrue(stationService.getStations().size() > 0);
-	}
+  @Test
+  public void testHasStations() {
+    assertNotNull(stationService.getStations());
+    assertTrue(stationService.getStations().size() > 0);
+  }
 
 }

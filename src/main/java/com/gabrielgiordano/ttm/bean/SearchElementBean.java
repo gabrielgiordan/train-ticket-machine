@@ -9,100 +9,101 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Bean SearchElement is used to return the search results.
+ * 
  * @author Gabriel Giordano
  */
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SearchElementBean implements Serializable {
 
-	private static final long serialVersionUID = 813037348073316707L;
+  private static final long serialVersionUID = 813037348073316707L;
 
-	private Set<Character> characters;
-	
-	private Collection<String> suffixes;
-	
-	private Collection<String> words;
-	
-	private int size;
+  private Set<Character> characters;
 
-	public SearchElementBean() {}
-	
-	/**
-	 * Gets the size of returned words.
-	 *
-	 * @return the size
-	 */
-	public int getSize() {
-		return size;
-	}
+  private Collection<String> suffixes;
 
-	/**
-	 * Sets the size of the returned words.
-	 *
-	 * @param size the new size
-	 */
-	public void setSize(int size) {
-		this.size = size;
-	}
+  private Collection<String> words;
 
-	/**
-	 * Gets the next characters for complete the next words.
-	 *
-	 * @return the characters
-	 */
-	public Set<Character> getCharacters() {
-		return characters;
-	}
+  private int size;
 
-	/**
-	 * Sets the characters for complete the next words.
-	 *
-	 * @param characters the new characters
-	 */
-	public void setCharacters(Set<Character> characters) {
-		this.characters = characters;
-	}
-	
-	/**
-	 * Auto-configure the suffixes to complete the next words.
-	 *
-	 * @param prefix the prefix to query
-	 */
-	public void setSuffixes(String prefix) {
-		suffixes = new ArrayList<String>();
-		
-		for (String word : words) {
-			
-			String suffix = word.substring(prefix.length(), word.length());
-			
-			if (!suffix.isEmpty())
-				suffixes.add(suffix);
-		}
-	}
+  public SearchElementBean() {}
 
-	/**
-	 * Gets the suffixes to complete the resulted words.
-	 *
-	 * @return the suffixes
-	 */
-	public Collection<String> getSuffixes() {
-		return suffixes;
-	}
+  /**
+   * Gets the size of returned words.
+   *
+   * @return the size
+   */
+  public int getSize() {
+    return size;
+  }
 
-	/**
-	 * Gets the words matching the query.
-	 *
-	 * @return the words
-	 */
-	public Collection<String> getWords() {
-		return words;
-	}
+  /**
+   * Sets the size of the returned words.
+   *
+   * @param size the new size
+   */
+  public void setSize(int size) {
+    this.size = size;
+  }
 
-	/**
-	 * Sets the words.
-	 *
-	 * @param words the new words
-	 */
-	public void setWords(Collection<String> words) {
-		this.words = words;
-	}
+  /**
+   * Gets the next characters for complete the next words.
+   *
+   * @return the characters
+   */
+  public Set<Character> getCharacters() {
+    return characters;
+  }
+
+  /**
+   * Sets the characters for complete the next words.
+   *
+   * @param characters the new characters
+   */
+  public void setCharacters(Set<Character> characters) {
+    this.characters = characters;
+  }
+
+  /**
+   * Auto-configure the suffixes to complete the next words.
+   *
+   * @param prefix the prefix to query
+   */
+  public void setSuffixes(String prefix) {
+    suffixes = new ArrayList<String>();
+
+    for (String word : words) {
+
+      String suffix = word.substring(prefix.length(), word.length());
+
+      if (!suffix.isEmpty())
+        suffixes.add(suffix);
+    }
+  }
+
+  /**
+   * Gets the suffixes to complete the resulted words.
+   *
+   * @return the suffixes
+   */
+  public Collection<String> getSuffixes() {
+    return suffixes;
+  }
+
+  /**
+   * Gets the words matching the query.
+   *
+   * @return the words
+   */
+  public Collection<String> getWords() {
+    return words;
+  }
+
+  /**
+   * Sets the words.
+   *
+   * @param words the new words
+   */
+  public void setWords(Collection<String> words) {
+    this.words = words;
+  }
 }
